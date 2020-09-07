@@ -1,3 +1,32 @@
 Migrate table from postgresql to Hive
 -------------------------------------------
+1. Login into PostgreSQL datavase
+--------------------------------------
+[root@hadoop ~]# sudo -i -u postgres psql
+psql (10.6)
+Type "help" for help.
 
+2. List database tables
+-------------------------
+The tabe of our Interest is dvdrental sample database.
+
+postgres=# \l
+                                   List of databases
+    Name     |  Owner   | Encoding |   Collate   |    Ctype    |   Access privil
+eges
+-------------+----------+----------+-------------+-------------+----------------
+-------
+ dvdrental   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ postgres    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ pymetastore | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ template0   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres
+      +
+             |          |          |             |             | postgres=CTc/po
+stgres
+ template1   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres
+      +
+             |          |          |             |             | postgres=CTc/po
+stgres
+(5 rows)
+
+postgres=#
