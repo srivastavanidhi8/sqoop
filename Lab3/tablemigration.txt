@@ -30,3 +30,73 @@ stgres
 (5 rows)
 
 postgres=#
+3. Connect to devrental database
+postgres=# \c dvdrental
+You are now connected to database "dvdrental" as user "postgres".
+
+4. List tables in this database
+
+dvdrental=# \dt
+             List of relations
+ Schema |     Name      | Type  |  Owner
+--------+---------------+-------+----------
+ public | actor         | table | postgres
+ public | address       | table | postgres
+ public | category      | table | postgres
+ public | city          | table | postgres
+ public | country       | table | postgres
+ public | customer      | table | postgres
+ public | film          | table | postgres
+ public | film_actor    | table | postgres
+ public | film_category | table | postgres
+ public | inventory     | table | postgres
+ public | language      | table | postgres
+ public | payment       | table | postgres
+ public | rental        | table | postgres
+ public | staff         | table | postgres
+ public | store         | table | postgres
+(15 rows)
+
+5. Since we plan to move actor table to Hive let's describe this table 
+
+dvdrental=# \d actor
+                                            Table "public.actor"
+   Column    |            Type             | Collation | Nullable |                 Default
+
+-------------+-----------------------------+-----------+----------+-------------------------------
+----------
+ actor_id    | integer                     |           | not null | nextval('actor_actor_id_seq'::
+regclass)
+ first_name  | character varying(45)       |           | not null |
+ last_name   | character varying(45)       |           | not null |
+ last_update | timestamp without time zone |           | not null | now()
+Indexes:
+    "actor_pkey" PRIMARY KEY, btree (actor_id)
+    "idx_actor_last_name" btree (last_name)
+Referenced by:
+    TABLE "film_actor" CONSTRAINT "film_actor_actor_id_fkey" FOREIGN KEY (actor_id) REFERENCES act
+or(actor_id) ON UPDATE CASCADE ON DELETE RESTRICT
+Triggers:
+    last_updated BEFORE UPDATE ON actor FOR EACH ROW EXECUTE PROCEDURE last_updated()
+
+dvdrental=#
+
+6. Lets explore actor table one step further and display its first 5 rows.
+
+dvdrental=# select * from actor limit 5;
+ actor_id | first_name |  last_name   |      last_update
+----------+------------+--------------+------------------------
+        1 | Penelope   | Guiness      | 2013-05-26 14:47:57.62
+        2 | Nick       | Wahlberg     | 2013-05-26 14:47:57.62
+        3 | Ed         | Chase        | 2013-05-26 14:47:57.62
+        4 | Jennifer   | Davis        | 2013-05-26 14:47:57.62
+        5 | Johnny     | Lollobrigida | 2013-05-26 14:47:57.62
+(5 rows)
+
+dvdrental=#
+
+
+
+
+
+
