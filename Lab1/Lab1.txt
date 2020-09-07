@@ -1,2 +1,38 @@
 Sqoop list tables
 ------------------
+Your virtual machine has a postgres installed with sample database named dvdrental, the details of which could be found in below link:
+
+https://www.postgresqltutorial.com/postgresql-sample-database/
+
+In this lab we will list tables of this database using sqoop. Run the below sqoop command to list the tables.
+
+[root@hadoop ~]# sqoop list-tables --connect jdbc:postgresql://localhost/dvdrental --username postgres -P 
+
+
+Warning: /usr/local/hadoop/sqoop/../hbase does not exist! HBase imports will fail.
+Please set $HBASE_HOME to the root of your HBase installation.
+Warning: /usr/local/hadoop/sqoop/../hcatalog does not exist! HCatalog jobs will fail.
+Please set $HCAT_HOME to the root of your HCatalog installation.
+Warning: /usr/local/hadoop/sqoop/../accumulo does not exist! Accumulo imports will fail.
+Please set $ACCUMULO_HOME to the root of your Accumulo installation.
+Warning: /usr/local/hadoop/sqoop/../zookeeper does not exist! Accumulo imports will fail.
+Please set $ZOOKEEPER_HOME to the root of your Zookeeper installation.
+2020-09-07 16:39:43,844 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7
+Enter password:
+2020-09-07 16:39:45,497 INFO manager.SqlManager: Using default fetchSize of 1000
+staff
+category
+film_category
+country
+actor
+language
+inventory
+payment
+rental
+city
+store
+film
+address
+film_actor
+customer
+[root@hadoop ~]#
