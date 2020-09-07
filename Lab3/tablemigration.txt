@@ -95,6 +95,10 @@ dvdrental=# select * from actor limit 5;
 
 dvdrental=#
 
+************************************Lets now begin with Sqoop operations *********************************
+
+[root@hadoop ~]# sqoop import --connect jdbc:postgresql://localhost/dvdrental --username postgres -P --split-by actor_id --columns actor_id,first_name,last_name,last_update --table actor --target-dir /opt/sqoop/hivetable --hive-import --create-hive-table --hive-table actor -m 1
+
 
 
 
