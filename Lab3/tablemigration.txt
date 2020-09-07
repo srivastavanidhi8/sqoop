@@ -100,7 +100,111 @@ dvdrental=#
 [root@hadoop ~]# sqoop import --connect jdbc:postgresql://localhost/dvdrental --username postgres -P --split-by actor_id --columns actor_id,first_name,last_name,last_update --table actor --target-dir /opt/sqoop/hivetable --hive-import --create-hive-table --hive-table actor -m 1
 
 
-
+Warning: /usr/local/hadoop/sqoop/../hbase does not exist! HBase imports will fail.
+Please set $HBASE_HOME to the root of your HBase installation.
+Warning: /usr/local/hadoop/sqoop/../hcatalog does not exist! HCatalog jobs will fail.
+Please set $HCAT_HOME to the root of your HCatalog installation.
+Warning: /usr/local/hadoop/sqoop/../accumulo does not exist! Accumulo imports will fail.
+Please set $ACCUMULO_HOME to the root of your Accumulo installation.
+Warning: /usr/local/hadoop/sqoop/../zookeeper does not exist! Accumulo imports will fail.
+Please set $ZOOKEEPER_HOME to the root of your Zookeeper installation.
+2020-09-07 17:49:41,487 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7
+Enter password:
+2020-09-07 17:49:43,627 INFO tool.BaseSqoopTool: Using Hive-specific delimiters for output. You can override
+2020-09-07 17:49:43,627 INFO tool.BaseSqoopTool: delimiters with --fields-terminated-by, etc.
+2020-09-07 17:49:43,828 INFO manager.SqlManager: Using default fetchSize of 1000
+2020-09-07 17:49:43,832 INFO tool.CodeGenTool: Beginning code generation
+2020-09-07 17:49:44,091 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM "actor" AS t LIMIT 1
+2020-09-07 17:49:44,166 INFO orm.CompilationManager: HADOOP_MAPRED_HOME is /usr/local/hadoop
+Note: /tmp/sqoop-root/compile/d0bad826dd5623b22b7d913b9e96103b/actor.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+2020-09-07 17:49:47,104 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-root/compile/d0bad826dd5623b22b7d913b9e96103b/actor.jar
+2020-09-07 17:49:47,133 WARN manager.PostgresqlManager: It looks like you are importing from postgresql.
+2020-09-07 17:49:47,136 WARN manager.PostgresqlManager: This transfer can be faster! Use the --direct
+2020-09-07 17:49:47,136 WARN manager.PostgresqlManager: option to exercise a postgresql-specific fast path.
+2020-09-07 17:49:47,137 INFO mapreduce.ImportJobBase: Beginning import of actor
+2020-09-07 17:49:47,140 INFO Configuration.deprecation: mapred.job.tracker is deprecated. Instead, use mapreduce.jobtracker.address
+2020-09-07 17:49:47,450 INFO Configuration.deprecation: mapred.jar is deprecated. Instead, use mapreduce.job.jar
+2020-09-07 17:49:48,799 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+2020-09-07 17:49:49,051 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /0.0.0.0:8032
+2020-09-07 17:49:50,938 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/root/.staging/job_1599506854254_0008
+2020-09-07 17:49:52,715 INFO db.DBInputFormat: Using read commited transaction isolation
+2020-09-07 17:49:52,776 INFO mapreduce.JobSubmitter: number of splits:1
+2020-09-07 17:49:53,274 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1599506854254_0008
+2020-09-07 17:49:53,274 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2020-09-07 17:49:53,797 INFO conf.Configuration: resource-types.xml not found
+2020-09-07 17:49:53,799 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2020-09-07 17:49:53,937 INFO impl.YarnClientImpl: Submitted application application_1599506854254_0008
+2020-09-07 17:49:53,996 INFO mapreduce.Job: The url to track the job: http://hadoop:8088/proxy/application_1599506854254_0008/
+2020-09-07 17:49:54,002 INFO mapreduce.Job: Running job: job_1599506854254_0008
+2020-09-07 17:50:06,297 INFO mapreduce.Job: Job job_1599506854254_0008 running in uber mode : false
+2020-09-07 17:50:06,298 INFO mapreduce.Job:  map 0% reduce 0%
+2020-09-07 17:50:14,398 INFO mapreduce.Job:  map 100% reduce 0%
+2020-09-07 17:50:14,413 INFO mapreduce.Job: Job job_1599506854254_0008 completed successfully
+2020-09-07 17:50:14,532 INFO mapreduce.Job: Counters: 33
+        File System Counters
+                FILE: Number of bytes read=0
+                FILE: Number of bytes written=272908
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=87
+                HDFS: Number of bytes written=7999
+                HDFS: Number of read operations=6
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters
+                Launched map tasks=1
+                Other local map tasks=1
+                Total time spent by all maps in occupied slots (ms)=5380
+                Total time spent by all reduces in occupied slots (ms)=0
+                Total time spent by all map tasks (ms)=5380
+                Total vcore-milliseconds taken by all map tasks=5380
+                Total megabyte-milliseconds taken by all map tasks=5509120
+        Map-Reduce Framework
+                Map input records=200
+                Map output records=200
+                Input split bytes=87
+                Spilled Records=0
+                Failed Shuffles=0
+                Merged Map outputs=0
+                GC time elapsed (ms)=43
+                CPU time spent (ms)=530
+                Physical memory (bytes) snapshot=145199104
+                Virtual memory (bytes) snapshot=2986172416
+                Total committed heap usage (bytes)=93388800
+                Peak Map Physical memory (bytes)=145199104
+                Peak Map Virtual memory (bytes)=2986172416
+        File Input Format Counters
+                Bytes Read=0
+        File Output Format Counters
+                Bytes Written=7999
+2020-09-07 17:50:14,551 INFO mapreduce.ImportJobBase: Transferred 7.8115 KB in 25.7298 seconds (310.8844 bytes/sec)
+2020-09-07 17:50:14,559 INFO mapreduce.ImportJobBase: Retrieved 200 records.
+2020-09-07 17:50:14,559 INFO mapreduce.ImportJobBase: Publishing Hive/Hcat import job data to Listeners for table actor
+2020-09-07 17:50:14,605 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM "actor" AS t LIMIT 1
+2020-09-07 17:50:14,611 WARN hive.TableDefWriter: Column last_update had to be cast to a less precise type in Hive
+2020-09-07 17:50:14,632 INFO hive.HiveImport: Loading uploaded data into Hive
+2020-09-07 17:50:14,638 INFO conf.HiveConf: Found configuration file file:/usr/local/hadoop/hive/conf/hive-site.xml
+2020-09-07 17:50:16,062 INFO hive.HiveImport: which: no hbase in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/java/jdk1.8.0_261-amd64/jre/bin:/usr/java/jdk1.8.0_261-amd64//bin:/usr/local/hadoop/sbin:/usr/local/hadoop/bin:/usr/local/hadoop/hive/bin:/usr/local/hadoop/hive/bin:/usr/local/hadoop/pig/bin:/root/bin:/usr/java/jdk1.8.0_261-amd64/jre/bin:/usr/java/jdk1.8.0_261-amd64//bin:/usr/local/hadoop/sbin:/usr/local/hadoop/bin:/usr/local/hadoop/hive/bin:/usr/local/hadoop/hive/bin:/usr/local/hadoop/pig/bin:/usr/local/hadoop/sqoop/bin:/usr/local/hadoop/sbin:/usr/local/hadoop/bin)
+2020-09-07 17:50:16,956 INFO hive.HiveImport: SLF4J: Class path contains multiple SLF4J bindings.
+2020-09-07 17:50:16,960 INFO hive.HiveImport: SLF4J: Found binding in [jar:file:/usr/local/hadoop/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+2020-09-07 17:50:16,960 INFO hive.HiveImport: SLF4J: Found binding in [jar:file:/usr/local/hadoop/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+2020-09-07 17:50:16,960 INFO hive.HiveImport: SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+2020-09-07 17:50:16,972 INFO hive.HiveImport: SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+2020-09-07 17:50:22,255 INFO hive.HiveImport: Hive Session ID = c502afe5-d19b-4612-9cc2-2e9c35c3bc06
+2020-09-07 17:50:22,404 INFO hive.HiveImport:
+2020-09-07 17:50:22,406 INFO hive.HiveImport: Logging initialized using configuration in jar:file:/usr/local/hadoop/hive/lib/hive-common-3.1.2.jar!/hive-log4j2.properties Async: true
+2020-09-07 17:50:34,825 INFO hive.HiveImport: Hive Session ID = 8d4ec639-4a9c-4fb4-a56f-9123aab110d8
+2020-09-07 17:50:38,250 INFO hive.HiveImport: OK
+2020-09-07 17:50:38,251 INFO hive.HiveImport: Time taken: 3.272 seconds
+2020-09-07 17:50:38,898 INFO hive.HiveImport: Loading data to table default.actor
+2020-09-07 17:50:39,335 INFO hive.HiveImport: OK
+2020-09-07 17:50:39,335 INFO hive.HiveImport: Time taken: 1.079 seconds
+2020-09-07 17:50:39,810 INFO hive.HiveImport: Hive import complete.
+2020-09-07 17:50:39,834 INFO hive.HiveImport: Export directory is contains the _SUCCESS file only, removing the directory.
+[root@hadoop ~]#
 
 
 
