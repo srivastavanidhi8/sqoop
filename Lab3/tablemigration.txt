@@ -99,6 +99,11 @@ dvdrental=#
 
 [root@hadoop ~]# sqoop import --connect jdbc:postgresql://localhost/dvdrental --username postgres -P --split-by actor_id --columns actor_id,first_name,last_name,last_update --table actor --target-dir /opt/sqoop/hivetable --hive-import --create-hive-table --hive-table actor -m 1
 
+                      For non-root sudoer execution
+
+[hdeveloper@hadoop bin]$ sudo  ./sqoop import --connect jdbc:postgresql://localhost/dvdrental --username postgres -P --split-by actor_id --columns actor_id,first_name,last_name,last_update --table actor --target-dir /opt/sqoop/hivetable --hive-import --create-hive-table --hive-table actor -m 1
+
+
 
 Warning: /usr/local/hadoop/sqoop/../hbase does not exist! HBase imports will fail.
 Please set $HBASE_HOME to the root of your HBase installation.
